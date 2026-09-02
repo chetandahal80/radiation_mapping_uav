@@ -68,7 +68,7 @@ Three terminals, in this order. Source the workspace (`source devel/setup.bash`)
 
 **Terminal 1 — start PX4 SITL + Gazebo with the radiation world:**
 ```bash
-~/Downloads/radiation_mapping/src/PX4-Autopilot/run_px4_with_radiation.sh
+(~/path to radiation_mapping_uav)/src/PX4-Autopilot/run_px4_with_radiation.sh
 ```
 
 **Terminal 2 — bring up SLAM, radiation mapping, radiation_bridge, and RViz:**
