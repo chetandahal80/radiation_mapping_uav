@@ -1,5 +1,7 @@
 # Autonomous Radiation Mapping UAV (PX4 SITL)
 
+**ROS1 Noetic · Ubuntu 20.04 · Gazebo 11**
+
 Single-UAV simulation stack for radiation mapping of radioactive environments.
 PX4-Autopilot SITL (Gazebo) flies a simulated iris quadcopter carrying a radiation
 sensor; Hector SLAM builds a 2D occupancy grid from onboard LiDAR; the Hector
@@ -86,5 +88,3 @@ and the fused radiation/occupancy map builds live in RViz.
 
 - **Altitude drift** — the drone's altitude drifts away from its predefined
   setpoint of 1.8 m during flight.
-
-
