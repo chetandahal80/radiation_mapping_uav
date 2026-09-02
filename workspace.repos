@@ -15,7 +15,7 @@ repositories:
   hector_localization:
     type: git
     url: https://github.com/chetandahal80/hector_localization.git
-    version: master   # only the message_to_tf package inside it is used
+    version: catkin   # only the message_to_tf package inside it is used
   PX4-Autopilot:
     type: git
     url: https://github.com/chetandahal80/PX4-Autopilot.git
