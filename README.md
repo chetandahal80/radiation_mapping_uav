@@ -46,7 +46,8 @@ git clone https://github.com/chetandahal80/radiation_mapping_uav.git
 cd radiation_mapping_uav
 vcs import --recursive src < workspace.repos
 rosdep install --from-paths src --ignore-src -r -y
-catkin_make
+sudo apt install python3-catkin-tools python3-osrf-pycommon
+catkin build
 ```
 
 ## Flight controller parameters (set once, before first flight)
