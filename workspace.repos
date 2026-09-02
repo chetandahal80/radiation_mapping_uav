@@ -1,0 +1,49 @@
+repositories:
+  # ---- Forked and modified ----
+  gazebo_radiation_plugin:
+    type: git
+    url: https://github.com/chetandahal80/gazebo_radiation_plugin.git
+    version: melodic
+  hector_radiation_mapping:
+    type: git
+    url: https://github.com/chetandahal80/hector_radiation_mapping.git
+    version: master
+  hector_slam:
+    type: git
+    url: https://github.com/chetandahal80/hector_slam.git
+    version: noetic-devel
+  hector_localization:
+    type: git
+    url: https://github.com/chetandahal80/hector_localization.git
+    version: master   # only the message_to_tf package inside it is used
+  PX4-Autopilot:
+    type: git
+    url: https://github.com/chetandahal80/PX4-Autopilot.git
+    version: main
+    # recursive submodule fetch pulls in the PX4-SITL_gazebo-classic fork automatically
+
+  # ---- Used unmodified, pinned to the exact commit tested ----
+  hector_rviz_plugins:
+    type: git
+    url: https://github.com/tu-darmstadt-ros-pkg/hector_rviz_plugins.git
+    version: c1fb1b2a9f203f6e0e7295834f6a1ad47ef52f32
+  mavros:
+    type: git
+    url: https://github.com/mavlink/mavros.git
+    version: 39d0929e929ae4e65f777b140f67be6b86d49568
+  mavlink:
+    type: git
+    url: https://github.com/mavlink/mavlink-gbp-release.git
+    version: 5cc1fc18ecffb53d3ef9973dd8a3cec473bbb46e
+  grid_map:
+    type: git
+    url: https://github.com/ANYbotics/grid_map.git
+    version: 73a5b61fc80c09be8a5744997b3ee3e6902a98fb
+  ddynamic_reconfigure:
+    type: git
+    url: https://github.com/pal-robotics/ddynamic_reconfigure.git
+    version: 5f5061746376aa3c3dc66eaa759e5b56c930c6b5
+  ros_babel_fish:
+    type: git
+    url: https://github.com/StefanFabian/ros_babel_fish.git
+    version: 51be4e2ee9350a070aeb7591d8553d104aab9abb
