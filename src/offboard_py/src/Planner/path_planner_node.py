@@ -66,7 +66,7 @@ class FrontierExplorer:
         self._map_dirty = True  # trigger replan
 
     def scan_callback(self, msg: LaserScan):
-        self.scan = msg  
+        self.scan = msg
 
     def get_robot_position(self):
         try:
@@ -159,9 +159,11 @@ class FrontierExplorer:
             rospy.loginfo("No frontier clusters above threshold.")
             return None
 
-        # Selection cost (travel + turn + small goal-change penalty)
+        # Selection cost (travel + turn + small goal-change penalty - info gain)
         v = rospy.get_param("~cruise_speed", 2.0)     # m/s
         yaw_rate = rospy.get_param("~yaw_rate", 1.2)  # rad/s
+    
+        gain_weight = rospy.get_param("~gain_weight", 0.02)  # cost-seconds per cell
 
         best = None
         best_cost = float('inf')
@@ -170,8 +172,10 @@ class FrontierExplorer:
             ys, xs = np.where(labels == lab)
             if xs.size == 0:
                 continue
-            cx_cell = int(np.median(xs)) + x0
-            cy_cell = int(np.median(ys)) + y0
+
+            _c = int(np.argmin((xs - xs.mean())**2 + (ys - ys.mean())**2))
+            cx_cell = int(xs[_c]) + x0
+            cy_cell = int(ys[_c]) + y0
 
             gx = cx_cell * self.map_resolution + self.map_origin[0]
             gy = cy_cell * self.map_resolution + self.map_origin[1]
@@ -191,7 +195,9 @@ class FrontierExplorer:
             ang_diff = math.atan2(math.sin(ang_to_goal - yaw), math.cos(ang_to_goal - yaw))
             turn_t = abs(ang_diff) / max(yaw_rate, 1e-6)
 
-            cost = travel_t + 0.5 * turn_t + 0.2 * goal_change_t
+            gain = gain_weight * float(xs.size)  # bigger frontier = more new area
+
+            cost = travel_t + 0.5 * turn_t + 0.2 * goal_change_t - gain
 
             if cost < best_cost:
                 best_cost = cost
@@ -220,7 +226,7 @@ class FrontierExplorer:
         pose.header.frame_id = "map"
         pose.pose.position.x = x
         pose.pose.position.y = y
-        pose.pose.position.z = self.height 
+        pose.pose.position.z = self.height
         q = quaternion_from_euler(0, 0, yaw)
         pose.pose.orientation.x = q[0]
         pose.pose.orientation.y = q[1]
