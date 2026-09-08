@@ -85,3 +85,4 @@ roslaunch mavros px4.launch fcu_url:=udp://:14540@127.0.0.1:14557
 Once all three are running, the drone begins autonomous frontier-based exploration
 and the fused radiation/occupancy map builds live in RViz.
 
+![Reactor room mapping demo](radiation_map.png)
