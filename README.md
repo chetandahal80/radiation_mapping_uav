@@ -85,7 +85,3 @@ roslaunch mavros px4.launch fcu_url:=udp://:14540@127.0.0.1:14557
 Once all three are running, the drone begins autonomous frontier-based exploration
 and the fused radiation/occupancy map builds live in RViz.
 
-## Known Issues
-
-- **Altitude drift** — the drone's altitude drifts away from its predefined
-  setpoint of 1.8 m during flight.
