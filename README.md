@@ -86,4 +86,5 @@ Once all three are running, the drone begins autonomous frontier-based explorati
 and the fused radiation/occupancy map builds live in RViz.
 
 ## Demo
-[![Reactor room radiation mapping demo](radiation_map.png)](https://youtu.be/jqrkwbvTcW0)
+[Video Link](https://youtu.be/jqrkwbvTcW0)
+![Reactor room radiation mapping demo](radiation_map.png)
